@@ -22,13 +22,13 @@ class handsDetector():
                                         min_tracking_confidence = self.minTrackingConfidence)
         self.mpDraw = mp.solutions.drawing_utils
 
+
     def findHands(self, frame, draw = False):
         (h, w) = frame.shape[:2]
-        RGBFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        self.results = self.hands.process(RGBFrame)
+        results = self.hands.process(frame)
 
-        if self.results.multi_hand_landmarks:
-            for handLandmarks in self.results.multi_hand_landmarks:
+        if results.multi_hand_landmarks:
+            for handLandmarks in results.multi_hand_landmarks:
                 if draw == True:
                     self.mpDraw.draw_landmarks(frame, handLandmarks, self.mpHands.HAND_CONNECTIONS)
 
@@ -37,9 +37,10 @@ class handsDetector():
     def findPosition(self, frame, handNumber = 0, draw = True):
         (height, width) = frame.shape[:2]
         landmarksList = []
+        results = self.hands.process(frame)
 
-        if self.results.multi_hand_landmarks:
-            myhand = self.results.multi_hand_landmarks[handNumber]
+        if results.multi_hand_landmarks:
+            myhand = results.multi_hand_landmarks[handNumber]
             for id, landmark in enumerate(myhand.landmark):
                 (x, y) = (int(width * landmark.x), int(height * landmark.y))
                 landmarksList.append((x, y))
