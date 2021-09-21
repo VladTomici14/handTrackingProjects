@@ -10,13 +10,23 @@ All scripts are written in Python and are based on the OpenCV library.
 ### Volume Controller
 ![image of the detector](photos/image1.png)
 
-Youtube video: [https://youtu.be/eA_BkTWLtB0](https://youtu.be/eA_BkTWLtB0)
+Check out Youtube for the [volume controller demo](https://youtu.be/eA_BkTWLtB0).
 
 
 ### Fingers counter
+One of the main problems that computer vision always aims to solve is counting. Counting is a repetitive and boring. So we can use computer vision to help us.
+
 
 
 ![image of the detecor]()
 
-[Youtube Video]()
+Check out Youtube for the [fingers counter demo](https://youtu.be/eA_BkTWLtB0).
+
+### Virtual mouse controlled by your finger
+Imagine how cool would it be to control your mouse cursor using just your hand....
+Oh wait, look at this ! Using computer vision, you can do this very easily ! 
+
+Check out Youtube for the [virtual mouse demo](https://youtu.be/eA_BkTWLtB0).
+
+
  
