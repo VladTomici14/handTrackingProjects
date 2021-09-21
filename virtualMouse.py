@@ -1,6 +1,5 @@
 from handTrackingModule import handsDetector
 import numpy as np
-import pyautogui
 import autopy
 import math
 import time
@@ -14,6 +13,7 @@ def main():
 
     # screen settings
     (screenWidth, screenHeight) = autopy.screen.size()
+    frameReduction = 75
 
     # hand tracking variables
     handdetector = handsDetector(staticImageModel = False,
@@ -58,9 +58,11 @@ def main():
 
             # 4. index finger up => moving mode
             if indexFingerStatus == True and middleFingerStatus == False:
+                cv2.rectangle(frame, (frameReduction, frameReduction), (width - frameReduction, height - frameReduction), (255, 100, 255), 3)
+
                 # 5. convert coords ((height, width) -> (screenHeight, screenWidth))
-                screenX = np.interp(xCoord[8], (0, width), (0, screenWidth))
-                screenY = np.interp(yCoord[8], (0, height), (0, screenHeight))
+                screenX = np.interp(xCoord[8], (frameReduction, width-frameReduction)   , (0, screenWidth))
+                screenY = np.interp(yCoord[8], (frameReduction, height-frameReduction), (0, screenHeight))
 
                 # 6. smoothening values
 
@@ -78,8 +80,9 @@ def main():
                     cv2.circle(frame, tuple(indexFinger), 10, (0, 255, 0), -1)
                     print("OK")
 
-            if touchingState == False:
+            if touchingState == False and middleFingerStatus == False:
                 cv2.circle(frame, tuple(indexFinger), 10, (0, 0, 255), -1)
+                autopy.mouse.click()
 
         # calculating the fps
         currentTime = time.time()
