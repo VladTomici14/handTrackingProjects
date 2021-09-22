@@ -20,7 +20,7 @@ One of the main problems that computer vision always aims to solve is counting. 
 
 ![image of the detecor]()
 
-Check out Youtube for the [fingers counter demo](https://youtu.be/eA_BkTWLtB0).
+Check out Youtube for the [fingers counter demo](https://youtu.be/ckP1272w99k).
 
 ### Virtual mouse controlled by your finger
 Imagine how cool would it be to control your mouse cursor using just your hand....
